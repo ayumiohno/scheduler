@@ -7,11 +7,17 @@
 				WHERE user_id == ?
 					AND day_id == #{week}
 					AND time_id == #{time}"
+	able_users = []
 	@user_ids.each do |user_id|
-		if Brankdays.find_by_sql([query, user_id.user_id]).first.check_sum == 1
+		if Brankdays.find_by_sql([query, user_id]).first.check_sum == 1
 			sum += 1
+			able_users.push(user_id)
 		end
 	end
 	%>
-	<%= "#{sum}"%>
+	<% if sum == 0 or !@user_ids.include?(current_user.id) %>
+		<%= sum %>
+	<% else %>
+		<%=link_to sum, detail_path(able_users: able_users)  %>
+	<% end %>
 </td>

@@ -1,0 +1,7 @@
+<ul>
+<% @able_users.each do|id|%>
+	<li>
+		<%="#{User.find(id).name}" %>
+	</li>
+<%end %>
+</ul>

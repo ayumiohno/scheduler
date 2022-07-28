@@ -11,7 +11,7 @@
 			</h1>
 			<ul>
 			<% @user_ids.each do |user_id| %>
-				<% user = User.find(user_id.user_id) %>
+				<% user = User.find(user_id) %>
 				<li><%= link_to "#{user.name}", user %></li>
 			<%end %>
 			</ul>

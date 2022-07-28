@@ -21,8 +21,16 @@ class GroupsController < ApplicationController
   def show
 		@group = Group.find(params[:id])
 		query = "SELECT user_id FROM belongs WHERE group_id == #{@group.id}"
-		@user_ids = Belong.find_by_sql(query)
+		user_belongs = Belong.find_by_sql(query)
+		@user_ids = []
+		user_belongs.each do |u_b|
+			@user_ids.push(u_b.user_id)
+		end
   end
+
+	def detail
+		@able_users = params[:able_users]
+	end
 
 	private
 		def	group_params

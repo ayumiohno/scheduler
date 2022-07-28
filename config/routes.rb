@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 	post '/makegroup', to: 'groups#create'
 	get '/joingroup', to: 'belongs#new'
 	post '/joingroup', to: 'belongs#create'
+	get '/detail', to: 'groups#detail'
 	resources :users
 	resources :groups
 end
