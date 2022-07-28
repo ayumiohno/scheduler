@@ -3,9 +3,9 @@
 	query = 
 	"SELECT COUNT(*) AS check_sum
 				FROM brankdays 
-				WHERE user_id == #{current_user.id}
-					AND day_id == #{week}
-					AND time_id == #{time}"
+				WHERE user_id = #{current_user.id}
+					AND day_id = #{week}
+					AND time_id = #{time}"
 	if Brankdays.find_by_sql(query).first.check_sum == 1
 	%>
 		o

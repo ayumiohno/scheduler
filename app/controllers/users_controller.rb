@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		query = "SELECT group_id FROM belongs WHERE user_id == #{@user.id}"
+		query = "SELECT group_id FROM belongs WHERE user_id = #{@user.id}"
 		@group_ids = Belong.find_by_sql(query)
 	end
 

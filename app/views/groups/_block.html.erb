@@ -4,9 +4,9 @@
 	query = 
 	"SELECT COUNT(*) AS check_sum
 				FROM brankdays 
-				WHERE user_id == ?
-					AND day_id == #{week}
-					AND time_id == #{time}"
+				WHERE user_id = ?
+					AND day_id = #{week}
+					AND time_id = #{time}"
 	able_users = []
 	@user_ids.each do |user_id|
 		if Brankdays.find_by_sql([query, user_id]).first.check_sum == 1

@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
 
   def show
 		@group = Group.find(params[:id])
-		query = "SELECT user_id FROM belongs WHERE group_id == #{@group.id}"
+		query = "SELECT user_id FROM belongs WHERE group_id = #{@group.id}"
 		user_belongs = Belong.find_by_sql(query)
 		@user_ids = []
 		user_belongs.each do |u_b|
