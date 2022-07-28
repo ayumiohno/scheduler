@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		query = "SELECT group_id FROM belongs WHERE user_id == #{@user.id}"
+		@group_ids = Belong.find_by_sql(query)
 	end
 
   def new
@@ -12,7 +14,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			flash[:success] = "Welcome to Meeting Scheduler"
-			redirect_to @user
+			redirect_to root_url
 		else
 			render 'new'
 		end

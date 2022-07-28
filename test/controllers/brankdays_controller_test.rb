@@ -1,8 +1,8 @@
 require "test_helper"
 
-class SessionsControllerTest < ActionDispatch::IntegrationTest
+class BrankdaysControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get login_path
+    get register_path
     assert_response :success
   end
 end

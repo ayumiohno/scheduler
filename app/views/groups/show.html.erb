@@ -1,22 +1,18 @@
-<%= provide(:title, @user.name) %>
+<%= provide(:title, @group.name) %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= @user.name %>
+        <%= @group.name %>
       </h1>
     </section>
-		<section class="center">
-			<%= link_to "Register Schedule", register_path, class: "btn btn-lg btn-primary" %>
-		</section>
-		<section>
 			<h1>
-				My Groups
+			Members
 			</h1>
 			<ul>
-			<% @group_ids.each do |group_id| %>
-				<% group = Group.find(group_id.group_id) %>
-				<li><%= link_to "#{group.name}", group %></li>
+			<% @user_ids.each do |user_id| %>
+				<% user = User.find(user_id.user_id) %>
+				<li><%= link_to "#{user.name}", user %></li>
 			<%end %>
 			</ul>
 		</section>
@@ -37,7 +33,7 @@
 			</thead>
 			<tbody>
 				<% for time in 1..5 do %>
-					<%= render 'layouts/row2', time: time%>
+					<%= render 'row', time: time%>
 				<% end %>
 			</tbody>
 		</table>

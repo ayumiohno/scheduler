@@ -1,0 +1,17 @@
+<td>
+	<%
+	sum = 0
+	query = 
+	"SELECT COUNT(*) AS check_sum
+				FROM brankdays 
+				WHERE user_id == ?
+					AND day_id == #{week}
+					AND time_id == #{time}"
+	@user_ids.each do |user_id|
+		if Brankdays.find_by_sql([query, user_id.user_id]).first.check_sum == 1
+			sum += 1
+		end
+	end
+	%>
+	<%= "#{sum}"%>
+</td>

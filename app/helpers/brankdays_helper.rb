@@ -1,0 +1,2 @@
+module BrankdaysHelper
+end

@@ -1,0 +1,26 @@
+<h1>Brankdays#new</h1>
+<p>Find me in app/views/brankdays/new.html.erb</p>
+	<div class="col-5 ml-3">
+	    <%= form_for(:register, url: register_path) do |f| %>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>月</th>
+                    <th>火</th>
+                    <th>水</th>
+                    <th>木</th>
+                    <th>金</th>
+                    <th>土</th>
+                    <th>日</th>
+                </tr>
+            </thead>
+            <tbody>
+								<% for time in 1..5 do%>
+									<%= render 'layouts/row', time: time, f: f%>
+								<%end%>
+            </tbody>
+        </table>
+
+      <%= f.submit "Register", class: "btn btn-primary" %>
+			<% end %>
+    </div>
